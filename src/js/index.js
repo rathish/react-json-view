@@ -1,9 +1,9 @@
 import React from 'react';
-import {polyfill} from 'react-lifecycles-compat';
+import { polyfill } from 'react-lifecycles-compat';
 import JsonViewer from './components/JsonViewer';
 import AddKeyRequest from './components/ObjectKeyModal/AddKeyRequest';
 import ValidationFailure from './components/ValidationFailure';
-import {toType, isTheme} from './helpers/util';
+import { toType, isTheme } from './helpers/util';
 import ObjectAttributes from './stores/ObjectAttributes';
 
 //global theme
@@ -31,6 +31,7 @@ class ReactJsonView extends React.PureComponent {
             prevSrc: ReactJsonView.defaultProps.src,
             prevName: ReactJsonView.defaultProps.name,
             prevTheme: ReactJsonView.defaultProps.theme,
+            // initialValues: ReactJsonView.defaultValue.initialValues,
         };
     }
 
@@ -59,6 +60,7 @@ class ReactJsonView extends React.PureComponent {
         style: {},
         validationMessage: 'Validation Error',
         defaultValue: null,
+        initialValues: null,
     }
 
     // will trigger whenever setState() is called, or parent passes in new props.
@@ -75,7 +77,8 @@ class ReactJsonView extends React.PureComponent {
                 validationMessage: nextProps.validationMessage,
                 prevSrc: nextProps.src,
                 prevName: nextProps.name,
-                prevTheme: nextProps.theme
+                prevTheme: nextProps.theme,
+                initaliValues: nextProps.initaliValues
             };
             return ReactJsonView.validateState(newPartialState);
         }
@@ -192,7 +195,7 @@ class ReactJsonView extends React.PureComponent {
         return (
             <div
                 class="react-json-view"
-                style={{...Theme(theme, 'app-container').style, ...style}}
+                style={{ ...Theme(theme, 'app-container').style, ...style }}
             >
                 <ValidationFailure
                     message={validationMessage}
@@ -238,15 +241,15 @@ class ReactJsonView extends React.PureComponent {
         };
 
         switch (type) {
-        case 'variable-added':
-            result = onAdd(on_edit_payload);
-            break;
-        case 'variable-edited':
-            result = onEdit(on_edit_payload);
-            break;
-        case 'variable-removed':
-            result = onDelete(on_edit_payload);
-            break;
+            case 'variable-added':
+                result = onAdd(on_edit_payload);
+                break;
+            case 'variable-edited':
+                result = onEdit(on_edit_payload);
+                break;
+            case 'variable-removed':
+                result = onDelete(on_edit_payload);
+                break;
         }
 
         if (result !== false) {

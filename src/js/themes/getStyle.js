@@ -301,6 +301,17 @@ const getDefaultThemeStyling = theme => {
             marginRight: constants.editInputMarginRight,
             fontFamily: constants.editInputFontFamily
         },
+        'edit-input-select': {
+            display: 'inline-block',
+            minHeight: constants.editInputHeight,
+            minWidth: constants.editInputMinWidth,
+            borderRadius: constants.editInputBorderRadius,
+            backgroundColor: colors.editVariable.background,
+            color: colors.editVariable.color,
+            padding: constants.editInputPadding,
+            marginRight: constants.editInputMarginRight,
+            fontFamily: constants.editInputFontFamily
+        },
         'detected-row': {
             paddingTop: constants.detectedRowPaddingTop
         },

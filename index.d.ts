@@ -135,6 +135,13 @@ export interface ReactJsonViewProps {
    * Default: null
    */
   defaultValue?: TypeDefaultValue | TypeDefaultValue[] | null;
+
+  /**
+   * Set list of initial values to be used as defaultValue prroposal when adding new key to json
+   *
+   * Default: null
+   */
+  initialValues?: InitialDefaultValue[] | null;
 }
 
 export interface OnCopyProps {
@@ -220,6 +227,8 @@ export interface OnSelectProps {
 }
 
 export type TypeDefaultValue = string | number | boolean | object;
+
+export type InitialDefaultValue = string | number | boolean | object;
 
 export interface ThemeObject {
   base00: string;
